@@ -25,7 +25,7 @@ const messageInput = document.querySelector('#messageInput')
 
 
 const totalMessages = document.querySelector('#totalMessages')
-//Bienvenida MENSAJE LOGIN
+//Bienvenido MENSAJE LOGIN
 async function insertUser(){
     let userName
     fetch('/user-info')
@@ -33,10 +33,7 @@ async function insertUser(){
      .then(json=>userName= json)
 
     console.log('userName', userName)
-    // console.log(res.body)
-    // const data= await res.json()
-    // document.querySelector('#Login').innerHTML= data.username
-    // console.log('userName', response.json)
+   
     const response = await fetch('/logIn.hbs')
     const logInPlantilla= await response.text()
     const template = Handlebars.compile(logInPlantilla)
@@ -58,7 +55,7 @@ function sendMessage() {
         const tiempochat = `${fecha}, ${argHora}`
         console.log(tiempochat)
         socket.emit('client:messageNormalizar', {author: { mail,nombre,apellido,edad,alias,avatar}, comment: {text:message, time:tiempochat}})
-        // socket.emit('client:message', { mail, tiempochat, message }) //emito el mensaje al servidor
+       
     } catch(error) {
         console.log(`Hubo un error ${error}`)
     }
@@ -120,7 +117,7 @@ async function renderProducts() {
          .then((product)=>product.json())
          .then((json)=> productsArray = json )
       
-        // console.log('productsArray',productsArray)
+        
         const response = await fetch('/plantilla.hbs') //traemos la plantilla
         
         

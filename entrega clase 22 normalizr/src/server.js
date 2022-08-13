@@ -6,9 +6,6 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import MongoStore from "connect-mongo";
 
-// console.log("pwd:", process.cwd())
-// const envFile = path.join(process.cwd(), './src/.env')
-// dotenv.config({ path: envFile });
 
 
 const DB_USER=process.env.DB_USER
@@ -94,18 +91,7 @@ app.get('/logout',authMiddleware,(req, res)=>{
     }
   })
 })
-// const handlebars = require('express-handlebars')
 
-
-// app.engine('hbs', handlebars({
-//   extname: '.hbs',
-//   defaultLayout: path.join(__dirname, './views/layouts/main.hbs'),
-//   layoutsDir: path.join(__dirname, './views/layouts'),
-//   partialsDir: path.join(__dirname, './views/partials')
-// }))
-
-// app.set('view engine', 'hbs')
-// app.set('views', path.join(__dirname, './views'))
 
 import path from 'path'
 import { fileURLToPath } from 'url';
@@ -133,9 +119,6 @@ const expressServer = app.listen(puerto, (err) => {
 })
 const io = new Server(expressServer) 
 
-// function print(objeto) {
-//     console.log(util.inspect(objeto, false, 12, true));
-// }
 
 const messagesNormalizar= []
 const productos= []
@@ -190,9 +173,6 @@ io.on('connection', async socket=>{
       
         io.emit('serverSend:message', normalizedChat)
     })
-    // socket.on('client:message', messageInfo=>{
-    //     messages.push(messageInfo) //RECIBO mensaje y lo anido
-    //     io.emit('serverSend:message', messages)//EMITO CHATS
-    // })
+ 
 })
 

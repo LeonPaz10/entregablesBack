@@ -17,7 +17,7 @@ router.get ('/api/productos-test', (req,res)=>{
         thumbnail: faker.image.imageUrl(),
       });
     }
-    // console.log(response)
+    
     res.json(response);
 })
 
